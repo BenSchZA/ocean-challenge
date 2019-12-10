@@ -4,3 +4,6 @@
 [submodule "barge"]
 	path = barge
 	url = git@github.com:BenSchZA/barge.git
+[submodule "commons"]
+	path = commons
+	url = git@github.com:oceanprotocol/commons.git
