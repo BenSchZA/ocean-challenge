@@ -1,3 +1,5 @@
+init:
+	git submodule update --init --recursive
 
 ocean:
 	barge/start_ocean.sh --no-commons 
