@@ -4,6 +4,8 @@ import { Ocean } from '@oceanprotocol/squid'
 import Web3 from 'web3'
 import asset from './asset'
 
+require('dotenv').config()
+
 let web3
 
 if (window.web3) {
@@ -18,14 +20,36 @@ class App extends Component {
     ddo: undefined
   }
 
+  async requestFromFaucet() {
+    const accounts = await this.state.ocean.accounts.list()
+    console.log(accounts[0]);
+    try {
+        const url = `${process.env.FAUCET_URI}/faucet`
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                address: accounts[0].id,
+                agent: 'commons'
+            })
+        })
+        console.log(JSON.stringify(response.json()))
+    } catch (error) {
+        console.log('requestFromFaucet', error.message)
+    }
+  }
+
   async componentDidMount() {
-    const ocean = await new Ocean.getInstance({
+    const ocean = await Ocean.getInstance({
       web3Provider: web3,
-      nodeUri: 'https://nile.dev-ocean.com',
-      aquariusUri: 'https://aquarius.marketplace.dev-ocean.com',
-      brizoUri: 'https://brizo.marketplace.dev-ocean.com',
-      brizoAddress: '0x4aaab179035dc57b35e2ce066919048686f82972',
-      secretStoreUri: 'https://secret-store.nile.dev-ocean.com',
+      nodeUri: process.env.NODE_URI,
+      aquariusUri: process.env.AQURIUS_URI,
+      brizoUri: process.env.BRIZO_URI,
+      brizoAddress: process.env.BRIZO_ADDRESS,
+      secretStoreUri: process.env.SECRET_STORE_URI,
       // local Spree connection
       // nodeUri: 'http://localhost:8545',
       // aquariusUri: 'http://aquarius:5000',
@@ -111,6 +135,9 @@ class App extends Component {
 
         {!web3 && <p>No Web3 Browser!</p>}
 
+        <button onClick={() => this.requestFromFaucet()} disabled={!web3}>
+          Faucet
+        </button>
         <button onClick={() => this.registerAsset()} disabled={!web3}>
           Register asset
         </button>

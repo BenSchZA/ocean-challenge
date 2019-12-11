@@ -1,5 +1,5 @@
 const asset = {
-  main: {
+  base: {
     name: '10 Monkey Species Small',
     dateCreated: '2012-02-01T10:55:11Z',
     author: 'Mario',
@@ -29,38 +29,36 @@ const asset = {
       }
     ]
   },
-  additionalInformation: {
-    categories: ['Biology'],
-    tags: ['image data', 'classification', 'animals'],
-    description: 'EXAMPLE ONLY ',
-    copyrightHolder: 'Unknown',
-    workExample: 'image path, id, label',
-    links: [
-      {
-        name: 'example model',
-        url:
-          'https://drive.google.com/open?id=1uuz50RGiAW8YxRcWeQVgQglZpyAebgSM'
-      },
-      {
-        name: 'example code',
-        type: 'example code',
-        url: 'https://github.com/slothkong/CNN_classification_10_monkey_species'
-      },
-      {
-        url:
-          'https://s3.amazonaws.com/datacommons-seeding-us-east/10_Monkey_Species_Small/links/discovery/n5151.jpg',
-        name: 'n5151.jpg',
-        type: 'discovery'
-      },
-      {
-        url:
-          'https://s3.amazonaws.com/datacommons-seeding-us-east/10_Monkey_Species_Small/links/sample/sample.zip',
-        name: 'sample.zip',
-        type: 'sample'
-      }
-    ],
-    inLanguage: 'en'
-  }
+  categories: ['Biology'],
+  tags: ['image data', 'classification', 'animals'],
+  description: 'EXAMPLE ONLY ',
+  copyrightHolder: 'Unknown',
+  workExample: 'image path, id, label',
+  links: [
+    {
+      name: 'example model',
+      url:
+        'https://drive.google.com/open?id=1uuz50RGiAW8YxRcWeQVgQglZpyAebgSM'
+    },
+    {
+      name: 'example code',
+      type: 'example code',
+      url: 'https://github.com/slothkong/CNN_classification_10_monkey_species'
+    },
+    {
+      url:
+        'https://s3.amazonaws.com/datacommons-seeding-us-east/10_Monkey_Species_Small/links/discovery/n5151.jpg',
+      name: 'n5151.jpg',
+      type: 'discovery'
+    },
+    {
+      url:
+        'https://s3.amazonaws.com/datacommons-seeding-us-east/10_Monkey_Species_Small/links/sample/sample.zip',
+      name: 'sample.zip',
+      type: 'sample'
+    }
+  ],
+  inLanguage: 'en'
 }
 
 export default asset
