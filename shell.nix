@@ -5,7 +5,7 @@ stdenv.mkDerivation {
   buildInputs = [
     docker
     docker_compose
-    nodejs-10_x
+    nodejs-12_x
     yarn
     pkgconfig
     autoconf
@@ -19,15 +19,11 @@ stdenv.mkDerivation {
     nasm
     autogen
     zlib
-    nodePackages.node-gyp
-    nodePackages.node-gyp-build
-    nodePackages.node-pre-gyp
+    # nodePackages.node-gyp
+    # nodePackages.node-gyp-build
+    # nodePackages.node-pre-gyp
     python
     pythonPackages.pip
     pythonPackages.setuptools
-    kubectl
-    git
-    awscli
-    aws-iam-authenticator
   ];
 }
