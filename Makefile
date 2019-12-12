@@ -1,18 +1,22 @@
-#http://0.0.0.0:5000/api/v1/docs/
+default: init install
 
 init:
 	git submodule update --init --recursive
+	cd contracts && openzeppelin init
+
+install:
+	cd commons && npm install
+	cd contracts && yarn
 
 ocean:
 	barge/start_ocean.sh --no-commons --local-spree-node
-
-tutorial:
-	scripts/keeper.sh
-	yarn start:react
 
 commons-ui:
 	cd commons && scripts/keeper.sh
 	cd commons && npm start
 
-deploy:
-	yarn --cwd contracts test:spree
+test:
+	yarn --cwd contracts test
+
+migrate:
+	yarn --cwd contracts migrate
